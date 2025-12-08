@@ -41,6 +41,18 @@ header h1 {
     color: var(--color-primary);
 }
 
+.site-title {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.site-title:visited,
+.site-title:hover,
+.site-title:focus {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
 nav a {
     text-decoration: none;
     color: var(--color-text-light);
@@ -315,3 +327,4 @@ footer {
         margin-right: 12px;
     }
 }
+
