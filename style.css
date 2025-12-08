@@ -68,7 +68,10 @@ nav a:hover {
 }
 
 /* === 드롭다운 메뉴 === */
-.dropdown { position: relative; display: inline-block; }
+.dropdown { 
+    position: relative; 
+    display: inline-block; 
+}
 
 .dropdown-content {
     display: none;
@@ -79,9 +82,13 @@ nav a:hover {
     z-index: 1000;
 }
 
-.dropdown:hover .dropdown-content { display: block; }
+.dropdown:hover .dropdown-content { 
+    display: block; 
+}
 
-.dropdown-sub { position: relative; }
+.dropdown-sub { 
+    position: relative; 
+}
 
 .dropdown-sub-content {
     display: none;
@@ -93,7 +100,9 @@ nav a:hover {
     min-width: 220px;
 }
 
-.dropdown-sub:hover .dropdown-sub-content { display: block; }
+.dropdown-sub:hover .dropdown-sub-content { 
+    display: block; 
+}
 
 .dropdown-content a,
 .dropdown-sub-content a {
@@ -193,6 +202,44 @@ nav a:hover {
     font-weight: bold;
 }
 
+/* === 유튜브 동기부여 섹션 === */
+.youtube-fighting {
+    background: var(--color-card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    max-width: 1200px;
+    margin: 40px auto 0;
+    border-top: 3px solid #e1e1e1; /* 위의 카드와 경계선 역할 */
+}
+
+.youtube-fighting h2 {
+    margin-bottom: 16px;
+}
+
+.youtube {
+    margin-top: 12px;
+}
+
+/* 반응형 유튜브 (화면 크기에 맞게 자동 축소) */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 비율 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 /* === 푸터 === */
 footer {
     text-align: center;
@@ -207,6 +254,24 @@ footer {
 @media (max-width: 900px) {
     .dashboard {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    nav a {
+        margin-left: 0;
+        margin-right: 12px;
+    }
+
+    .youtube-fighting {
+        padding: 20px;
+        margin: 20px auto 0;
     }
 }
 
@@ -314,17 +379,3 @@ footer {
     color: white;
     box-shadow: 0 4px 10px rgba(58, 134, 255, 0.18);
 }
-
-@media (max-width: 600px) {
-    .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    nav a {
-        margin-left: 0;
-        margin-right: 12px;
-    }
-}
-
