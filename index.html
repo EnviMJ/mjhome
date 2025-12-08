@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2027 임용고시</title>
+
+    <!-- 분리된 CSS 파일 -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <h1>2027 임용고시</h1>
+
+        <nav>
+            <div class="dropdown">
+                <a href="#">정보·컴퓨터</a>
+
+                <div class="dropdown-content">
+
+                    <div class="dropdown-sub">
+                        <a href="#">교과내용학 ▶</a>
+                        <div class="dropdown-sub-content">
+                            <a href="c_programming.html">C프로그래밍</a>
+                            <a href="datastructure.html">자료구조</a>
+                            <a href="#">컴퓨터네트워크</a>
+                            <a href="#">논리회로</a>
+                            <a href="#">운영체제</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-sub">
+                        <a href="#">교과교육학 ▶</a>
+                        <div class="dropdown-sub-content">
+                            <a href="middle_info.html">중학교 정보</a>
+                            <a href="high_info.html">고등학교 정보</a>
+                            <a href="#">고등학교 인공지능기초</a>
+                            <a href="#">고등학교 데이터 과학</a>
+                            <a href="#">고등학교 소프트웨어와 생활</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <a href="education.html">교육학</a>
+            <a href="#">일기장</a>
+            <a href="mock_exam.html">모의고사</a>
+        </nav>
+    </div>
+</header>
+
+<main class="dashboard">
+
+    <!-- 오늘의 한 페이지 -->
+    <section class="card review-card">
+        <h2>오늘의 한 페이지</h2>
+
+        <div class="review-tabs">
+            <button class="tab-btn active" onclick="showTab('major')">전공</button>
+            <button class="tab-btn" onclick="showTab('edu')">교육학</button>
+        </div>
+
+        <div id="tab-major" class="review-content">
+            <p>오늘의 전공 요약 페이지입니다. 핵심 개념을 한 문단으로 정리해서 보여줍니다.</p>
+        </div>
+
+        <div id="tab-edu" class="review-content" style="display:none;">
+            <p>오늘의 교육학 요약 페이지입니다. 핵심 개념을 한 문단으로 정리해서 보여줍니다.</p>
+        </div>
+    </section>
+
+    <!-- 일정 카드 -->
+    <section class="card schedule-card">
+        <div class="schedule-header">
+            <h2>일정 + 캘린더</h2>
+            <button class="add-schedule-btn">+</button>
+        </div>
+
+        <div class="calendar-display">
+            <p class="dday" id="dday"></p>
+            <p class="calendar-title" id="cal-title"></p>
+            <div class="mini-calendar" id="mini-cal"></div>
+        </div>
+
+        <div class="weekly-schedule">
+            <h3>일주일간의 주요 일정</h3>
+            <ul>
+                <li>✔ 18일: 교육학 스터디 (10:00)</li>
+                <li>✔ 20일: 모의고사 1회차 응시</li>
+            </ul>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>신민준 | E-MAIL | PHONE NUMBER | © 2027 임용고시 학습 허브</p>
+</footer>
+
+<script>
+/* 탭 전환 */
+function showTab(tab) {
+    document.getElementById("tab-major").style.display = tab === "major" ? "block" : "none";
+    document.getElementById("tab-edu").style.display = tab === "edu" ? "block" : "none";
+
+    document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+    if (tab === "major") document.querySelectorAll(".tab-btn")[0].classList.add("active");
+    else document.querySelectorAll(".tab-btn")[1].classList.add("active");
+}
+
+/* === D-Day 계산 로직 수정 (D--37 → D-37 해결) === */
+const today = new Date();
+const exam = new Date("2025-11-01");
+
+const diff = Math.floor((exam - today) / (1000 * 60 * 60 * 24));
+
+let ddayText = "";
+
+if (diff > 0) {
+    ddayText = `D-${diff}`;
+} else if (diff === 0) {
+    ddayText = "D-Day";
+} else {
+    ddayText = `D+${Math.abs(diff)}`;
+}
+
+document.getElementById("dday").textContent = ddayText;
+
+/* === 시스템 날짜 기반 달력 생성 === */
+const year = today.getFullYear();
+const month = today.getMonth() + 1;
+const date = today.getDate();
+
+document.getElementById("cal-title").textContent = `${year}년 ${month}월`;
+
+const mini = document.getElementById("mini-cal");
+const firstDay = new Date(year, month - 1, 1).getDay();
+const lastDate = new Date(year, month, 0).getDate();
+
+/* 요일 출력 */
+["월","화","수","목","금","토","일"].forEach(d => {
+    const el = document.createElement("span");
+    el.textContent = d;
+    mini.appendChild(el);
+});
+
+/* 빈칸 */
+for (let i = 0; i < (firstDay + 6) % 7; i++) {
+    mini.appendChild(document.createElement("span"));
+}
+
+/* 날짜 출력 */
+for (let d = 1; d <= lastDate; d++) {
+    const el = document.createElement("span");
+    el.textContent = d;
+    if (d === date) el.classList.add("today");
+    mini.appendChild(el);
+}
+</script>
+
+</body>
+</html>
