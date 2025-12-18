@@ -6,41 +6,35 @@
     <title>모의고사 자료실 | 2027 임용고시</title>
     <link rel="stylesheet" href="style.css" />
     <style>
-        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 30px; }
-        
-        /* 글쓰기 영역 */
-        .write-section { border: 1px solid #e1e1e1; padding: 20px; border-radius: 8px; margin-bottom: 40px; background: #fcfcfc; }
-        .write-section h3 { margin-top: 0; color: #333; }
-        .write-section select, .write-section input[type="text"], .write-section textarea {
-            width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;
-        }
-        .write-section textarea { height: 120px; resize: none; }
-        .write-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
-        .submit-btn { background: #03c75a; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    /* 모의고사 맞춤 추가 스타일 */
+    .container { display: flex; flex-direction: column; gap: 30px; }
+    
+    /* 검색 영역 최적화 */
+    .search-area { 
+        display: flex; justify-content: center; align-items: center; gap: 10px; 
+        padding: 20px; background: #f2f4f7; border-radius: 12px; margin-bottom: 10px;
+    }
+    .search-area select, .search-area input { 
+        padding: 10px; border: 1px solid #ddd; border-radius: 6px; outline: none;
+    }
+    .search-area input[type="text"] { width: 300px; }
+    .search-btn { 
+        background: var(--color-text-dark); color: white; border: none; 
+        padding: 10px 20px; cursor: pointer; border-radius: 6px; font-weight: bold;
+    }
 
-        /* 검색창 영역 (네이버 카페 스타일 확장) */
-        .search-area { 
-            display: flex; justify-content: center; align-items: center; gap: 5px; 
-            padding: 20px; background: #f2f2f2; border-radius: 8px; margin-bottom: 20px;
-        }
-        .search-area select, .search-area input { padding: 8px; border: 1px solid #ccc; border-radius: 3px; }
-        .search-area input[type="text"] { width: 250px; }
-        .search-btn { background: #333; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 3px; }
+    /* 태그 배지 스타일 업데이트 */
+    .tag-badge { 
+        padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: bold;
+    }
+    .tag-교육학 { background: #e3f2fd; color: #1976d2; }
+    .tag-교과교육학 { background: #f3e5f5; color: #7b1fa2; }
+    .tag-교과내용학 { background: #e8f5e9; color: #388e3c; }
 
-        /* 게시판 목록 */
-        .board-table { width: 100%; border-collapse: collapse; }
-        .board-table th { border-bottom: 2px solid #333; padding: 12px; text-align: left; background: #f9f9f9; }
-        .board-table td { padding: 12px; border-bottom: 1px solid #eee; }
-        .tag-badge { 
-            padding: 3px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: bold;
-            background: #eee; color: #666; margin-right: 5px;
-        }
-        .tag-교육학 { background: #e3f2fd; color: #1976d2; }
-        .tag-교과교육학 { background: #f3e5f5; color: #7b1fa2; }
-        .tag-교과내용학 { background: #e8f5e9; color: #388e3c; }
-        
-        .no-data { text-align: center; padding: 50px; color: #999; }
-    </style>
+    /* 테이블 행 호버 효과 */
+    .board-table tr:hover { background: #fcfcfc; }
+    .board-table td { padding: 15px; border-bottom: 1px solid #eee; }
+</style>
 </head>
 <body>
 
@@ -142,58 +136,61 @@
 
  </header>
 
-<main class="page-wrapper">
+<main class="page-wrapper" style="max-width: 1200px; margin: 40px auto; padding: 0 30px;">
     <div class="breadcrumb">Home · 모의고사</div>
-    <div class="page-hero">
-        <span class="badge">Exam</span>
-        <h2>모의고사 자료실</h2>
-        <p>시험 자료를 업로드하고 제목, 내용, 태그별로 상세 검색이 가능합니다.</p>
+    <div class="page-hero" style="margin-bottom: 30px;">
+        <span class="badge" style="background: var(--color-primary); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem;">Exam</span>
+        <h2 style="font-size: 2rem; margin-top: 10px;">모의고사 자료실</h2>
+        <p style="color: var(--color-text-light);">시험 자료를 업로드하고 태그별로 상세 검색이 가능합니다.</p>
     </div>
 
     <div class="container">
-        <div class="write-section">
-            <h3>📤 자료 업로드</h3>
-            <select id="postTag">
-                <option value="교육학">교육학</option>
-                <option value="교과교육학">교과교육학</option>
-                <option value="교과내용학">교과내용학</option>
-            </select>
-            <input type="text" id="postTitle" placeholder="자료 제목을 입력하세요" />
-            <textarea id="postContent" placeholder="자료에 대한 설명을 적어주세요."></textarea>
-            <div class="write-bottom">
-                <input type="file" id="postFile" />
-                <button class="submit-btn" onclick="savePost()">등록하기</button>
+        <section class="card" style="border-top: 4px solid #03c75a;">
+            <h3 style="margin-bottom: 15px;">📤 자료 업로드</h3>
+            <div style="display: grid; grid-template-columns: 150px 1fr; gap: 10px; margin-bottom: 10px;">
+                <select id="postTag">
+                    <option value="교육학">교육학</option>
+                    <option value="교과교육학">교과교육학</option>
+                    <option value="교과내용학">교과내용학</option>
+                </select>
+                <input type="text" id="postTitle" placeholder="자료 제목을 입력하세요" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ddd;" />
             </div>
-        </div>
+            <textarea id="postContent" placeholder="자료에 대한 설명을 적어주세요." style="width: 100%; height: 100px; padding: 10px; border-radius: 6px; border: 1px solid #ddd; resize: none;"></textarea>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                <input type="file" id="postFile" style="font-size: 0.85rem;" />
+                <button class="submit-btn" onclick="savePost()" style="background: #03c75a;">등록하기</button>
+            </div>
+        </section>
 
-        <div class="search-area">
-            <select id="searchType">
-                <option value="all">제목+내용</option>
-                <option value="title">제목</option>
-                <option value="content">내용</option>
-            </select>
-            <select id="searchTag">
-                <option value="전체">전체 태그</option>
-                <option value="교육학">교육학</option>
-                <option value="교과교육학">교과교육학</option>
-                <option value="교과내용학">교과내용학</option>
-            </select>
-            <input type="text" id="searchText" placeholder="검색어를 입력하세요" />
-            <button class="search-btn" onclick="displayPosts()">검색</button>
-        </div>
+        <section class="card">
+            <div class="search-area">
+                <select id="searchType">
+                    <option value="all">제목+내용</option>
+                    <option value="title">제목</option>
+                </select>
+                <select id="searchTag">
+                    <option value="전체">전체 태그</option>
+                    <option value="교육학">교육학</option>
+                    <option value="교과교육학">교과교육학</option>
+                    <option value="교과내용학">교과내용학</option>
+                </select>
+                <input type="text" id="searchText" placeholder="검색어를 입력하세요" />
+                <button class="search-btn" onclick="displayPosts()">검색</button>
+            </div>
 
-        <table class="board-table">
-            <thead>
-                <tr>
-                    <th style="width:10%">번호</th>
-                    <th style="width:15%">태그</th>
-                    <th style="width:55%">제목</th>
-                    <th style="width:20%">날짜</th>
-                </tr>
-            </thead>
-            <tbody id="postList">
-                </tbody>
-        </table>
+            <table class="board-table" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #333; background: #f9f9f9;">
+                        <th style="padding: 12px; width: 10%;">번호</th>
+                        <th style="padding: 12px; width: 15%;">태그</th>
+                        <th style="padding: 12px; width: 55%;">제목</th>
+                        <th style="padding: 12px; width: 20%; text-align: right;">날짜</th>
+                    </tr>
+                </thead>
+                <tbody id="postList">
+                    </tbody>
+            </table>
+        </section>
     </div>
 </main>
 
