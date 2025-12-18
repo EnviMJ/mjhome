@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>교과내용학 | 운영체제</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="site-title"><h1>MJ's Study</h1></a>
-            <nav><a href="index.html">Home</a></nav>
+<header>
+    <div class="header-container">
+        <h1><a class="site-title" href="index.html">2027 임용고시</a></h1>
+        <nav><a href="index.html">Home</a></nav>
+    </div>
+</header>
+
+<main class="page-wrapper">
+    <div class="breadcrumb">정보·컴퓨터 · 교과내용학 · 운영체제</div>
+    <div class="page-hero">
+        <span class="badge">교과내용학</span>
+        <h2>운영체제 (Operating Systems)</h2>
+        <p>프로세스 관리, 메모리 할당, 파일 시스템 등 시스템 자원의 효율적 관리 원리를 다룹니다.</p>
+    </div>
+
+    <div class="section-grid">
+        <div class="section-card">
+            <h3>핵심 학습 영역</h3>
+            <ul>
+                <li>프로세스 및 스레드 상태 전이도</li>
+                <li>CPU 스케줄링 (FCFS, SJF, RR, SRT)</li>
+                <li>병행 제어: 세마포어, 뮤텍스, 모니터</li>
+                <li>교착 상태(Deadlock)의 발생 조건 및 회피(은행원 알고리즘)</li>
+            </ul>
         </div>
-    </header>
 
-    <main class="page-wrapper">
-        <div class="breadcrumb">Contents > Computer Science > 운영체제</div>
-        
-        <section class="page-hero">
-            <span class="badge">System CS</span>
-            <h2>💻 운영체제 (Operating Systems)</h2>
-            <p>하드웨어 자원을 효율적으로 관리하고 사용자 인터페이스를 제공하는 소프트웨어의 핵심입니다.</p>
-        </section>
-
-        <div class="section-grid">
-            <article class="section-card">
-                <h3>Process & Thread</h3>
-                <ul>
-                    <li>프로세스의 생명 주기와 상태 변화</li>
-                    <li>멀티 스레딩과 동기화 문제</li>
-                    <li>Deadlock(교착 상태) 발생 조건과 해결</li>
-                </ul>
-            </article>
-
-            <article class="section-card">
-                <h3>Memory & Storage</h3>
-                <ul>
-                    <li>가상 메모리와 페이징 기법</li>
-                    <li>캐시 적중률(Cache Hit)과 지역성</li>
-                    <li>파일 시스템 구조와 디스크 관리</li>
-                </ul>
-                <div class="highlight">중요: 컨텍스트 스위칭 오버헤드를 줄이는 것이 성능의 핵심!</div>
-            </article>
+        <div class="section-card">
+            <h3>대표 기출 포인트</h3>
+            <ul>
+                <li>가상 메모리 페이지 교체 알고리즘 (FIFO, LRU, LFU)</li>
+                <li>디스크 스케줄링 (SCAN, C-SCAN, LOOK)</li>
+                <li>프로세스 동기화 문제 (생산자-소비자, 식사하는 철학자)</li>
+            </ul>
+            <div class="highlight"><strong>임계 구역(Critical Section)</strong>의 3가지 해결 조건(상호배제, 진행, 한계대기)을 반드시 기억하세요.</div>
         </div>
-    </main>
+    </div>
+</main>
 
-    <footer>&copy; 2025 MJ Learning Note. All rights reserved.</footer>
+<footer><p>신민준 | © 2027 임용고시 학습 허브</p></footer>
 </body>
 </html>
