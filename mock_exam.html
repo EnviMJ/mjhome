@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>모의고사 자료실 | 2027 임용고시</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        
+        /* 글쓰기 영역 */
+        .write-section { border: 1px solid #e1e1e1; padding: 20px; border-radius: 8px; margin-bottom: 40px; background: #fcfcfc; }
+        .write-section h3 { margin-top: 0; color: #333; }
+        .write-section select, .write-section input[type="text"], .write-section textarea {
+            width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;
+        }
+        .write-section textarea { height: 120px; resize: none; }
+        .write-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+        .submit-btn { background: #03c75a; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+
+        /* 검색창 영역 (네이버 카페 스타일) */
+        .search-area { 
+            display: flex; justify-content: center; align-items: center; gap: 5px; 
+            padding: 20px; background: #f2f2f2; border-radius: 8px; margin-bottom: 20px;
+        }
+        .search-area select, .search-area input { padding: 8px; border: 1px solid #ccc; border-radius: 3px; }
+        .search-area input[type="text"] { width: 250px; }
+        .search-btn { background: #333; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 3px; }
+
+        /* 게시판 목록 */
+        .board-table { width: 100%; border-collapse: collapse; }
+        .board-table th { border-bottom: 2px solid #333; padding: 12px; text-align: left; background: #f9f9f9; }
+        .board-table td { padding: 12px; border-bottom: 1px solid #eee; }
+        .tag-badge { 
+            padding: 3px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: bold;
+            background: #eee; color: #666; margin-right: 5px;
+        }
+        .tag-교육학 { background: #e3f2fd; color: #1976d2; }
+        .tag-교과교육학 { background: #f3e5f5; color: #7b1fa2; }
+        .tag-교과내용학 { background: #e8f5e9; color: #388e3c; }
+        
+        .no-data { text-align: center; padding: 50px; color: #999; }
+    </style>
+</head>
+<body>
+
+ <header>
+     <div class="header-container">
+         <h1><a class="site-title" href="https://envimj.github.io/mjhome">2027 임용고시</a></h1>
+ 
+         <nav>
+             <div class="dropdown">
+                <a href="#">정보·컴퓨터</a>
+                <div class="dropdown-content">
+                    <div class="dropdown-sub">
+                        <a href="#">교과내용학 ▶</a>
+                        <div class="dropdown-sub-content">
+                            <a href="c_programming.html">C프로그래밍</a>
+                            <a href="data_structures.html">자료구조</a>
+                            <a href="computer_networks.html">컴퓨터네트워크</a>
+                            <a href="logic_circuits.html">논리회로</a>
+                            <a href="operating_systems.html">운영체제</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-sub">
+                        <a href="#">교과교육학 ▶</a>
+                        <div class="dropdown-sub-content">
+                            <a href="middle_info.html">중학교 정보</a>
+                            <a href="high_info.html">고등학교 정보</a>
+                            <a href="ai_basics.html">고등학교 인공지능기초</a>
+                            <a href="data_science.html">고등학교 데이터 과학</a>
+                            <a href="software_life.html">고등학교 소프트웨어와 생활</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="dropdown">
+                <a href="#">교육학</a>
+                <div class="dropdown-content">
+                            <a href="curriculum.html">교육과정</a>
+                            <a href="edu_method.html">교육방법 및 교육공학</a>
+                            <a href="edu_evaluation.html">교육평가</a>
+                            <a href="edu_psychology.html">교육심리</a>
+                            <a href="edu_research.html">교육연구</a>
+                            <a href="guidance.html">생활지도</a>
+                            <a href="edu_admin.html">교육행정</a>
+                            <a href="edu_philosophy.html">교육철학 및 교육사</a>
+                            <a href="edu_sociology.html">교육사회학</a>
+                </div>
+            </div>
+            <a href="diary.html">일기장</a>
+            <a href="mock_exam.html">모의고사</a>
+         </nav>
+     </div>
+ </header>
+
+<main class="page-wrapper">
+    <div class="breadcrumb">Home · 모의고사</div>
+    <div class="page-hero">
+        <span class="badge">Exam</span>
+        <h2>모의고사 자료실</h2>
+        <p>시험 자료를 업로드하고 태그별로 분류하여 검색할 수 있습니다.</p>
+    </div>
+
+    <div class="container">
+        <div class="write-section">
+            <h3>📤 자료 업로드</h3>
+            <select id="postTag">
+                <option value="교육학">교육학</option>
+                <option value="교과교육학">교과교육학</option>
+                <option value="교과내용학">교과내용학</option>
+            </select>
+            <input type="text" id="postTitle" placeholder="자료 제목을 입력하세요" />
+            <textarea id="postContent" placeholder="자료에 대한 설명을 적어주세요."></textarea>
+            <div class="write-bottom">
+                <input type="file" id="postFile" />
+                <button class="submit-btn" onclick="savePost()">등록하기</button>
+            </div>
+        </div>
+
+        <div class="search-area">
+            <select id="searchType">
+                <option value="all">제목or내용</option>
+            </select>
+            <select id="searchTag">
+                <option value="전체">전체 태그</option>
+                <option value="교육학">교육학</option>
+                <option value="교과교육학">교과교육학</option>
+                <option value="교과내용학">교과내용학</option>
+            </select>
+            <input type="text" id="searchText" placeholder="검색어를 입력하세요" />
+            <button class="search-btn" onclick="displayPosts()">검색</button>
+        </div>
+
+        <table class="board-table">
+            <thead>
+                <tr>
+                    <th style="width:10%">번호</th>
+                    <th style="width:15%">태그</th>
+                    <th style="width:55%">제목</th>
+                    <th style="width:20%">날짜</th>
+                </tr>
+            </thead>
+            <tbody id="postList">
+                </tbody>
+        </table>
+    </div>
+</main>
+
+<footer>
+    <p>신민준 | © 2027 임용고시 학습 허브</p>
+</footer>
+
+<script>
+    window.onload = function() {
+        displayPosts();
+    };
+
+    function savePost() {
+        const tag = document.getElementById('postTag').value;
+        const title = document.getElementById('postTitle').value;
+        const content = document.getElementById('postContent').value;
+        const date = new Date().toLocaleDateString();
+
+        if (!title || !content) {
+            alert("제목과 내용을 입력해 주세요!");
+            return;
+        }
+
+        let posts = JSON.parse(localStorage.getItem('mockPosts')) || [];
+        const nextId = posts.length > 0 ? posts[0].id + 1 : 1;
+
+        const newPost = {
+            id: nextId,
+            tag: tag,
+            title: title,
+            content: content,
+            date: date
+        };
+
+        posts.unshift(newPost);
+        localStorage.setItem('mockPosts', JSON.stringify(posts));
+
+        // 필드 초기화
+        document.getElementById('postTitle').value = '';
+        document.getElementById('postContent').value = '';
+        
+        alert("게시글이 등록되었습니다.");
+        displayPosts();
+    }
+
+    function displayPosts() {
+        const list = document.getElementById('postList');
+        const posts = JSON.parse(localStorage.getItem('mockPosts')) || [];
+        
+        // 검색 값 가져오기
+        const sTag = document.getElementById('searchTag').value;
+        const sText = document.getElementById('searchText').value.toLowerCase();
+
+        list.innerHTML = '';
+
+        // 필터링 로직
+        const filtered = posts.filter(p => {
+            const matchTag = (sTag === "전체" || p.tag === sTag);
+            const matchText = (p.title.toLowerCase().includes(sText) || p.content.toLowerCase().includes(sText));
+            return matchTag && matchText;
+        });
+
+        if (filtered.length === 0) {
+            list.innerHTML = '<tr><td colspan="4" class="no-data">검색 결과가 없습니다.</td></tr>';
+            return;
+        }
+
+        // 10개 출력
+        filtered.slice(0, 10).forEach(p => {
+            const row = `
+                <tr>
+                    <td>${p.id}</td>
+                    <td><span class="tag-badge tag-${p.tag}">${p.tag}</span></td>
+                    <td><strong>${p.title}</strong></td>
+                    <td>${p.date}</td>
+                </tr>
+            `;
+            list.innerHTML += row;
+        });
+    }
+</script>
+<footer>
+     <p>신민준 | E-MAIL | PHONE NUMBER | © 2027 임용고시 학습 허브</p>
+ </footer>
+</body>
+</html>
