@@ -5,106 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2027 임용고시</title>
     <link rel="stylesheet" href="style.css" />
-    <style>
-        /* 추가 및 수정 스타일 */
-        
-        /* 1. 푸터 가로 전체 적용 */
-        footer {
-            width: 100%;
-            background: #fff;
-            border-top: 1px solid #dee2e6;
-            padding: 30px 0;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        /* 2. 동영상 크기 확대 (기존보다 크게 조정) */
-        .youtube-fighting {
-            grid-column: 1 / -1; /* 대시보드 내에서 가로 전체 차지 */
-            margin-bottom: 30px;
-        }
-        .video-wrapper {
-            max-width: 1000px; /* 최대 너비 확장 */
-            margin: 0 auto;
-        }
-
-        /* 3. 달력 및 대시보드 레이아웃 */
-        .dashboard {
-            display: grid;
-            grid-template-columns: 2fr 1fr; /* 왼쪽 콘텐츠 2 : 오른쪽 달력 1 */
-            gap: 30px;
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .calendar-card {
-            position: relative;
-            background: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        /* + 버튼 스타일 */
-        .add-btn {
-            background: var(--color-primary);
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            line-height: 1;
-        }
-
-        /* 일정 수정 모달(팝업) 창 */
-        #schedule-modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 2000;
-            width: 350px;
-        }
-
-        #schedule-modal h3 { margin-bottom: 15px; }
-        #schedule-modal input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; }
-        
-        .modal-btns { display: flex; gap: 10px; }
-        .modal-btns button { flex: 1; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
-        .save-btn { background: var(--color-primary); color: white; }
-        
-        /* 이번 주 일정 리스트 */
-        .weekly-schedule {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-        .schedule-item {
-            font-size: 0.9rem;
-            padding: 8px 0;
-            border-bottom: 1px dashed #eee;
-            color: var(--color-text-dark);
-        }
-
-        @media (max-width: 900px) {
-            .dashboard { grid-template-columns: 1fr; }
-        }
-    </style>
 </head>
 <body>
 
@@ -113,33 +13,33 @@
         <h1><a class="site-title" href="https://envimj.github.io/mjhome">2027 임용고시</a></h1>
         <nav>
             <div class="dropdown">
-               <a href="#">정보·컴퓨터</a>
-               <div class="dropdown-content">
-                   <div class="dropdown-sub">
-                       <a href="#">교과내용학 ▶</a>
-                       <div class="dropdown-sub-content">
-                           <a href="c_programming.html">C프로그래밍</a>
-                           <a href="data_structures.html">자료구조</a>
-                           <a href="computer_networks.html">컴퓨터네트워크</a>
-                           <a href="logic_circuits.html">논리회로</a>
-                           <a href="operating_systems.html">운영체제</a>
-                       </div>
-                   </div>
-                   <div class="dropdown-sub">
-                       <a href="#">교과교육학 ▶</a>
-                       <div class="dropdown-sub-content">
-                           <a href="middle_info.html">중학교 정보</a>
-                           <a href="high_info.html">고등학교 정보</a>
-                           <a href="ai_basics.html">고등학교 인공지능기초</a>
-                           <a href="data_science.html">고등학교 데이터 과학</a>
-                           <a href="software_life.html">고등학교 소프트웨어와 생활</a>
-                       </div>
-                   </div>
-               </div>
-           </div>
+                <a href="#">정보·컴퓨터</a>
+                <div class="dropdown-content">
+                    <div class="dropdown-sub">
+                        <a href="#">교과내용학 ▶</a>
+                        <div class="dropdown-sub-content">
+                            <a href="c_programming.html">C프로그래밍</a>
+                            <a href="data_structures.html">자료구조</a>
+                            <a href="computer_networks.html">컴퓨터네트워크</a>
+                            <a href="logic_circuits.html">논리회로</a>
+                            <a href="operating_systems.html">운영체제</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-sub">
+                        <a href="#">교과교육학 ▶</a>
+                        <div class="dropdown-sub-content">
+                            <a href="middle_info.html">중학교 정보</a>
+                            <a href="high_info.html">고등학교 정보</a>
+                            <a href="ai_basics.html">고등학교 인공지능기초</a>
+                            <a href="data_science.html">고등학교 데이터 과학</a>
+                            <a href="software_life.html">고등학교 소프트웨어와 생활</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="dropdown">
-               <a href="#">교육학</a>
-               <div class="dropdown-content">
+                <a href="#">교육학</a>
+                <div class="dropdown-content">
                     <a href="curriculum.html">교육과정</a>
                     <a href="edu_method.html">교육방법 및 교육공학</a>
                     <a href="edu_evaluation.html">교육평가</a>
@@ -149,10 +49,10 @@
                     <a href="edu_admin.html">교육행정</a>
                     <a href="edu_philosophy.html">교육철학 및 교육사</a>
                     <a href="edu_sociology.html">교육사회학</a>
-               </div>
-           </div>
-           <a href="diary.html">일기장</a>
-           <a href="mock_exam.html">모의고사</a>
+                </div>
+            </div>
+            <a href="diary.html">일기장</a>
+            <a href="mock_exam.html">모의고사</a>
         </nav>
     </div>
 </header>
@@ -160,17 +60,15 @@
 <main class="dashboard">
     <div class="left-content">
         <section class="card review-card">
-    <h2>오늘의 한 페이지</h2>
-
-        <div class="review-tabs">
-        <button class="tab-btn active" id="btn-major" onclick="showTab('major')">전공</button>
-        <button class="tab-btn" id="btn-edu" onclick="showTab('edu')">교육학</button>
-        </div>
-
-        <div id="review-display" class="review-content" style="margin-top: 15px;">
-        <p id="tab-text">오늘의 전공 요약 페이지입니다. 핵심 개념을 한 문단으로 정리해서 보여줍니다.</p>
-        </div>
-        </section>  
+            <h2>오늘의 한 페이지</h2>
+            <div class="review-tabs">
+                <button class="tab-btn active" id="btn-major" onclick="showTab('major')">전공</button>
+                <button class="tab-btn" id="btn-edu" onclick="showTab('edu')">교육학</button>
+            </div>
+            <div class="review-content">
+                <p id="tab-text">오늘의 전공 요약 페이지입니다. 핵심 개념을 한 문단으로 정리해서 보여줍니다.</p>
+            </div>
+        </section>
 
         <section class="youtube-fighting">
             <h2>동기부여 영상</h2>
@@ -178,8 +76,7 @@
                 <div class="video-wrapper">
                     <iframe
                         src="https://www.youtube.com/embed/UQpjPgMRypQ"
-                        title="중등 임용고시, 만점 맞은 수업실연 영상..."
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        title="중등 임용고시 영상"
                         allowfullscreen>
                     </iframe>
                 </div>
@@ -188,17 +85,16 @@
     </div>
 
     <aside class="calendar-card">
-    <div class="calendar-header">
-        <h3>나의 달력</h3>
-        <button class="add-btn" onclick="openModal()">+</button>
-    </div>
-    
-    <div class="calendar-display">
-        <p class="dday">D-365</p>
-        <p style="color: #666; font-weight: 600;">2025년 12월</p>
-    </div>
+        <div class="calendar-header">
+            <h3>나의 달력</h3>
+            <button class="add-btn" onclick="openModal()">+</button>
+        </div>
+        
+        <div class="calendar-display">
+            <span class="dday">D-365</span>
+            <p class="calendar-month">2025년 12월</p>
+        </div>
 
-    <div class="mini-calendar">
         <div class="calendar-grid">
             <div class="calendar-day-head">일</div><div class="calendar-day-head">월</div>
             <div class="calendar-day-head">화</div><div class="calendar-day-head">수</div>
@@ -214,22 +110,28 @@
             <div class="calendar-date">12</div><div class="calendar-date">13</div>
             <div class="calendar-date">14</div><div class="calendar-date">15</div>
             <div class="calendar-date">16</div><div class="calendar-date">17</div>
-            <div class="calendar-date today">18</div> <div class="calendar-date">19</div><div class="calendar-date">20</div>
-            </div>
-    </div>
-
-    <div class="weekly-schedule">
-        <h4>📅 이번 주 일정</h4>
-        <div id="schedule-list">
-            <p class="schedule-item">등록된 일정이 없습니다.</p>
+            <div class="calendar-date today">18</div>
+            <div class="calendar-date">19</div><div class="calendar-date">20</div>
+            <div class="calendar-date">21</div><div class="calendar-date">22</div>
+            <div class="calendar-date">23</div><div class="calendar-date">24</div>
+            <div class="calendar-date">25</div><div class="calendar-date">26</div>
+            <div class="calendar-date">27</div><div class="calendar-date">28</div>
+            <div class="calendar-date">29</div><div class="calendar-date">30</div>
+            <div class="calendar-date">31</div>
         </div>
-    </div>
-</aside>
+
+        <div class="weekly-schedule">
+            <h4>📅 이번 주 일정</h4>
+            <div id="schedule-list">
+                <p class="schedule-item">등록된 일정이 없습니다.</p>
+            </div>
+        </div>
+    </aside>
 </main>
 
 <div id="schedule-modal">
-    <h3>일정 추가/수정</h3>
-    <input type="text" id="schedule-input" placeholder="일정 내용을 입력하세요">
+    <h3>일정 추가</h3>
+    <input type="text" id="schedule-input" placeholder="일정을 입력하세요">
     <div class="modal-btns">
         <button class="save-btn" onclick="saveSchedule()">저장</button>
         <button onclick="closeModal()">취소</button>
@@ -241,54 +143,33 @@
 </footer>
 
 <script>
-    // 모달 제어 함수
-    function openModal() {
-        document.getElementById('schedule-modal').style.display = 'block';
+    function showTab(type) {
+        const text = document.getElementById('tab-text');
+        const btnMajor = document.getElementById('btn-major');
+        const btnEdu = document.getElementById('btn-edu');
+        if (type === 'major') {
+            text.innerText = "오늘의 전공 요약 페이지입니다. 핵심 개념을 한 문단으로 정리해서 보여줍니다.";
+            btnMajor.classList.add('active');
+            btnEdu.classList.remove('active');
+        } else {
+            text.innerText = "오늘의 교육학 요약 페이지입니다. 교육과정, 심리 등 핵심 이론을 정리합니다.";
+            btnMajor.classList.remove('active');
+            btnEdu.classList.add('active');
+        }
     }
-
-    function closeModal() {
-        document.getElementById('schedule-modal').style.display = 'none';
-    }
-
-    // 일정 저장 함수
+    function openModal() { document.getElementById('schedule-modal').style.display = 'block'; }
+    function closeModal() { document.getElementById('schedule-modal').style.display = 'none'; }
     function saveSchedule() {
         const input = document.getElementById('schedule-input');
         const list = document.getElementById('schedule-list');
-        
         if (input.value.trim() !== "") {
-            // 첫 등록 시 안내 문구 삭제
-            if (list.innerHTML.includes("등록된 일정이 없습니다")) {
-                list.innerHTML = "";
-            }
-            
+            if (list.innerHTML.includes("등록된 일정이 없습니다")) list.innerHTML = "";
             const newItem = document.createElement('div');
             newItem.className = 'schedule-item';
             newItem.innerText = "• " + input.value;
             list.appendChild(newItem);
-            
             input.value = "";
             closeModal();
-        } else {
-            alert("내용을 입력해주세요.");
-        }
-    }
-</script>
-
-<script>
-    // 탭 전환 기능 함수
-    function showTab(type) {
-        const textElement = document.getElementById('tab-text');
-        const btnMajor = document.getElementById('btn-major');
-        const btnEdu = document.getElementById('btn-edu');
-
-        if (type === 'major') {
-            textElement.innerText = "오늘의 전공 요약 페이지입니다. 핵심 개념을 한 문단으로 정리해서 보여줍니다.";
-            btnMajor.classList.add('active');
-            btnEdu.classList.remove('active');
-        } else {
-            textElement.innerText = "오늘의 교육학 요약 페이지입니다. 교육과정, 심리 등 핵심 이론을 정리합니다.";
-            btnMajor.classList.remove('active');
-            btnEdu.classList.add('active');
         }
     }
 </script>
