@@ -1,4 +1,4 @@
-/* 기본 설정 */
+/* [초기 설정 및 폰트] */
 :root {
     --color-primary: #3A86FF;
     --color-accent: #FFB700;
@@ -15,13 +15,13 @@
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--color-background);
     color: var(--color-text-dark);
     line-height: 1.6;
 }
 
-/* 헤더 */
+/* [헤더 및 네비게이션] */
 header {
     background-color: var(--color-card-bg);
     border-bottom: 1px solid #dee2e6;
@@ -38,9 +38,9 @@ header {
 
 .site-title {
     font-size: 1.5rem;
-    font-weight: bold;
     color: var(--color-primary);
     text-decoration: none;
+    font-weight: bold;
 }
 
 nav a {
@@ -53,48 +53,48 @@ nav a {
 
 nav a:hover {
     color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 5px;
 }
 
-/* 드롭다운 */
+/* [드롭다운 메뉴] */
 .dropdown { position: relative; display: inline-block; }
 .dropdown-content {
     display: none;
     position: absolute;
     background: white;
-    min-width: 180px;
-    border: 1px solid #ddd;
+    min-width: 200px;
+    border: 1px solid #ccc;
     z-index: 1000;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 .dropdown:hover .dropdown-content { display: block; }
+.dropdown-sub { position: relative; }
 .dropdown-sub-content {
     display: none;
     position: absolute;
     left: 100%; top: 0;
     background: white;
-    border: 1px solid #ddd;
-    min-width: 180px;
+    border: 1px solid #ccc;
+    min-width: 220px;
 }
 .dropdown-sub:hover .dropdown-sub-content { display: block; }
-.dropdown-content a {
+.dropdown-content a, .dropdown-sub-content a {
     display: block;
-    padding: 10px 15px;
-    color: #333;
-    font-size: 0.9rem;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
 }
-.dropdown-content a:hover { background: #f8f9fa; }
+.dropdown-content a:hover { background: #eee; }
 
-/* 대시보드 구조 */
+/* [메인 대시보드 - 초기 레이아웃 복구] */
 .dashboard {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 30px;
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 30px;
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
 }
-
-.left-content { display: flex; flex-direction: column; gap: 30px; }
 
 .card {
     background: white;
@@ -105,13 +105,15 @@ nav a:hover {
 
 .review-card { border-left: 5px solid var(--color-accent); }
 
+/* [탭 버튼] */
 .tab-btn {
-    padding: 6px 16px;
-    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
     border-radius: 20px;
-    background: white;
+    background: transparent;
     cursor: pointer;
-    margin-right: 8px;
+    margin-right: 10px;
+    transition: 0.3s;
 }
 
 .tab-btn.active {
@@ -120,112 +122,63 @@ nav a:hover {
     border-color: var(--color-primary);
 }
 
-/* 동영상 */
+/* [달력 및 D-Day] */
+.calendar-display {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.dday {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    white-space: nowrap;
+    display: block;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-top: 15px;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.calendar-day-head { font-weight: bold; color: var(--color-text-light); padding-bottom: 5px; }
+.calendar-date { padding: 8px 0; border-radius: 4px; cursor: pointer; }
+.calendar-date.today { background: var(--color-accent); font-weight: bold; }
+
+/* [일정 리스트 스타일] */
+.weekly-schedule { margin-top: 25px; padding-top: 15px; border-top: 2px solid #f8f9fa; }
+.schedule-item { padding: 8px 0; border-bottom: 1px dashed #eee; font-size: 0.9rem; }
+.sch-date { color: var(--color-primary); font-weight: bold; margin-right: 5px; }
+
+/* [유튜브 섹션] */
 .youtube-fighting {
-    background: white;
+    background: var(--color-card-bg);
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-top: 30px;
 }
+
 .video-wrapper {
     position: relative;
+    width: 100%;
     padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 12px;
 }
+
 .video-wrapper iframe {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     border: none;
 }
 
-/* 달력 카드 */
-.calendar-card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    height: fit-content;
-}
-
-.calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.add-btn {
-    background: var(--color-primary);
-    color: white;
-    border: none;
-    width: 30px; height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-}
-
-.calendar-display {
-    text-align: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 20px;
-}
-
-.dday {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--color-primary);
-    white-space: nowrap;
-}
-
-.calendar-month { color: #666; font-size: 0.95rem; }
-
-/* 달력 그리드 */
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    text-align: center;
-}
-
-.calendar-day-head {
-    font-size: 0.75rem;
-    font-weight: bold;
-    color: #999;
-    padding-bottom: 10px;
-}
-
-.calendar-date {
-    padding: 10px 0;
-    font-size: 0.85rem;
-    border-radius: 5px;
-}
-
-.calendar-date.today {
-    background: var(--color-accent);
-    font-weight: bold;
-}
-
-/* 일정 목록 */
-.weekly-schedule {
-    margin-top: 25px;
-    padding-top: 15px;
-    border-top: 2px solid #f8f9fa;
-}
-
-.schedule-item {
-    padding: 10px 0;
-    border-bottom: 1px dashed #eee;
-    font-size: 0.9rem;
-}
-
-.sch-date { color: var(--color-primary); font-weight: bold; margin-right: 5px; }
-
-.empty-msg { color: #ccc; font-size: 0.85rem; text-align: center; padding: 20px; }
-
-/* 모달 */
+/* [신규 모달 스타일] */
 #schedule-modal {
     display: none;
     position: fixed;
@@ -236,44 +189,26 @@ nav a:hover {
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     z-index: 2000;
-    width: 420px;
+    width: 400px;
 }
 
-.modal-input-group {
-    display: flex;
-    gap: 10px;
-    margin: 20px 0;
-}
-
-#schedule-modal input {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 0.9rem;
-}
-
-#schedule-date { flex: 1.5; }
+.modal-input-group { display: flex; gap: 10px; margin: 20px 0; }
+#schedule-modal input { padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+#schedule-date { flex: 1.2; }
 #schedule-input { flex: 2; }
-
 .modal-btns { display: flex; gap: 10px; }
-.modal-btns button {
-    flex: 1; padding: 10px; border: none; border-radius: 5px; cursor: pointer;
-}
-
+.modal-btns button { flex: 1; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
 .save-btn { background: var(--color-primary); color: white; }
-.cancel-btn { background: #eee; }
 
-/* 푸터 */
+/* [푸터] */
 footer {
-    width: 100%;
-    background: white;
-    padding: 30px 0;
     text-align: center;
-    border-top: 1px solid #eee;
-    margin-top: 50px;
+    padding: 30px;
+    margin-top: 40px;
+    color: var(--color-text-light);
+    border-top: 1px solid #dee2e6;
+    background: white;
+    width: 100%;
 }
 
-/* 반응형 */
-@media (max-width: 900px) {
-    .dashboard { grid-template-columns: 1fr; }
-}
+@media (max-width: 900px) { .dashboard { grid-template-columns: 1fr; } }
