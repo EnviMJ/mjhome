@@ -160,15 +160,17 @@
 <main class="dashboard">
     <div class="left-content">
         <section class="card review-card">
-            <h2>오늘의 한 페이지</h2>
-            <div class="review-tabs">
-                <button class="tab-btn active">전공</button>
-                <button class="tab-btn">교육학</button>
-            </div>
-            <div id="tab-major" class="review-content">
-                <p>오늘의 전공 요약 페이지입니다. 핵심 개념을 한 문단으로 정리해서 보여줍니다.</p>
-            </div>
-        </section>
+    <h2>오늘의 한 페이지</h2>
+
+        <div class="review-tabs">
+        <button class="tab-btn active" id="btn-major" onclick="showTab('major')">전공</button>
+        <button class="tab-btn" id="btn-edu" onclick="showTab('edu')">교육학</button>
+        </div>
+
+        <div id="review-display" class="review-content" style="margin-top: 15px;">
+        <p id="tab-text">오늘의 전공 요약 페이지입니다. 핵심 개념을 한 문단으로 정리해서 보여줍니다.</p>
+        </div>
+        </section>  
 
         <section class="youtube-fighting">
             <h2>동기부여 영상</h2>
@@ -250,6 +252,25 @@
             closeModal();
         } else {
             alert("내용을 입력해주세요.");
+        }
+    }
+</script>
+
+<script>
+    // 탭 전환 기능 함수
+    function showTab(type) {
+        const textElement = document.getElementById('tab-text');
+        const btnMajor = document.getElementById('btn-major');
+        const btnEdu = document.getElementById('btn-edu');
+
+        if (type === 'major') {
+            textElement.innerText = "오늘의 전공 요약 페이지입니다. 핵심 개념을 한 문단으로 정리해서 보여줍니다.";
+            btnMajor.classList.add('active');
+            btnEdu.classList.remove('active');
+        } else {
+            textElement.innerText = "오늘의 교육학 요약 페이지입니다. 교육과정, 심리 등 핵심 이론을 정리합니다.";
+            btnMajor.classList.remove('active');
+            btnEdu.classList.add('active');
         }
     }
 </script>

@@ -379,3 +379,38 @@ footer {
     color: white;
     box-shadow: 0 4px 10px rgba(58, 134, 255, 0.18);
 }
+
+
+    /* D-Day 텍스트가 한 줄에 나오도록 강제 설정 */
+    .dday {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+        display: block;      /* 영역 확보 */
+        margin-bottom: 5px;
+        letter-spacing: -1px; /* 글자 간격 살짝 좁힘 */
+    }
+
+    .calendar-display {
+        text-align: center;
+        padding: 20px 10px;
+        width: 100%;        /* 너비 충분히 확보 */
+        box-sizing: border-box;
+    }
+
+    /* 탭 버튼 스타일 보완 */
+    .tab-btn {
+        padding: 8px 15px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        background: transparent;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .tab-btn.active {
+        background: var(--color-primary);
+        color: white;
+        border-color: var(--color-primary);
+    }
