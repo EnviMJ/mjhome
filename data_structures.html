@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>교과내용학 | 자료구조</title>
-    <link rel="stylesheet" href="style.css"> </head>
+    <link rel="stylesheet" href="style.css" />
+</head>
 <body>
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="site-title"><h1>MJ's Study</h1></a>
-            <nav><a href="index.html">Home</a></nav>
+<header>
+    <div class="header-container">
+        <h1><a class="site-title" href="index.html">2027 임용고시</a></h1>
+        <nav><a href="index.html">Home</a></nav>
+    </div>
+</header>
+
+<main class="page-wrapper">
+    <div class="breadcrumb">정보·컴퓨터 · 교과내용학 · 자료구조</div>
+    <div class="page-hero">
+        <span class="badge">교과내용학</span>
+        <h2>자료구조 (Data Structures)</h2>
+        <p>데이터의 효율적인 조직화와 알고리즘의 시간/공간 복잡도 최적화를 학습합니다.</p>
+    </div>
+
+    <div class="section-grid">
+        <div class="section-card">
+            <h3>핵심 학습 영역</h3>
+            <ul>
+                <li>선형 구조: Stack, Queue, Deque, Linked List</li>
+                <li>비선형 구조: Tree(이진트리, AVL, B-Tree), Graph</li>
+                <li>정렬 및 탐색: Quick, Merge, Heap Sort, Hash</li>
+                <li>알고리즘 복잡도 분석 ($O(n)$, $\Omega(n)$, $\Theta(n)$)</li>
+            </ul>
         </div>
-    </header>
 
-    <main class="page-wrapper">
-        <div class="breadcrumb">Contents > Computer Science > 자료구조</div>
-        
-        <section class="page-hero">
-            <span class="badge">Essential CS</span>
-            <h2>📊 자료구조 (Data Structures)</h2>
-            <p>데이터의 효율적인 저장과 관리, 알고리즘 최적화의 기초를 학습합니다.</p>
-        </section>
-
-        <div class="section-grid">
-            <article class="section-card">
-                <h3>Linear Structures</h3>
-                <ul>
-                    <li><strong>Array:</strong> 인덱스를 통한 빠른 접근</li>
-                    <li><strong>Linked List:</strong> 동적인 데이터 추가 및 삭제</li>
-                    <li><strong>Stack & Queue:</strong> LIFO와 FIFO 원리의 이해</li>
-                </ul>
-                <div class="highlight">현실 예시: 브라우저 뒤로가기(Stack), 인쇄 대기열(Queue)</div>
-            </article>
-
-            <article class="section-card">
-                <h3>Non-Linear Structures</h3>
-                <ul>
-                    <li><strong>Tree:</strong> 계층적 구조 (이진 탐색 트리, 힙)</li>
-                    <li><strong>Graph:</strong> 네트워크 연결 관계 표현</li>
-                    <li><strong>Hash Table:</strong> 키-값 쌍의 빠른 검색</li>
-                </ul>
-                <div class="link-list">
-                    <a href="#">Visualizer 보기</a>
-                </div>
-            </article>
+        <div class="section-card">
+            <h3>대표 기출 포인트</h3>
+            <ul>
+                <li>트리의 순회(Pre/In/Post-order) 결과 도출</li>
+                <li>AVL 트리의 회전(LL, RR, LR, RL) 과정</li>
+                <li>해싱의 충돌 해결 전략 (Open Addressing, Chaining)</li>
+                <li>최소 신장 트리(MST) 알고리즘 (Kruskal, Prim)</li>
+            </ul>
+            <div class="highlight"><strong>우선순위 큐</strong>는 힙(Heap) 자료구조와 연계하여 구현 방식을 완벽히 숙지해야 합니다.</div>
         </div>
-    </main>
+    </div>
+</main>
 
-    <footer>&copy; 2025 MJ Learning Note. All rights reserved.</footer>
+<footer><p>신민준 | © 2027 임용고시 학습 허브</p></footer>
 </body>
 </html>
