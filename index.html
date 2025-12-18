@@ -76,7 +76,7 @@
                 <div class="video-wrapper">
                     <iframe
                         src="https://www.youtube.com/embed/UQpjPgMRypQ"
-                        title="중등 임용고시 영상"
+                        title="동기부여 영상"
                         allowfullscreen>
                     </iframe>
                 </div>
@@ -123,7 +123,7 @@
         <div class="weekly-schedule">
             <h4>📅 이번 주 일정</h4>
             <div id="schedule-list">
-                <p class="schedule-item">등록된 일정이 없습니다.</p>
+                <p class="empty-msg">등록된 일정이 없습니다.</p>
             </div>
         </div>
     </aside>
@@ -131,10 +131,13 @@
 
 <div id="schedule-modal">
     <h3>일정 추가</h3>
-    <input type="text" id="schedule-input" placeholder="일정을 입력하세요">
+    <div class="modal-input-group">
+        <input type="date" id="schedule-date">
+        <input type="text" id="schedule-input" placeholder="일정을 입력하세요">
+    </div>
     <div class="modal-btns">
         <button class="save-btn" onclick="saveSchedule()">저장</button>
-        <button onclick="closeModal()">취소</button>
+        <button class="cancel-btn" onclick="closeModal()">취소</button>
     </div>
 </div>
 
@@ -143,6 +146,7 @@
 </footer>
 
 <script>
+    // 탭 전환
     function showTab(type) {
         const text = document.getElementById('tab-text');
         const btnMajor = document.getElementById('btn-major');
@@ -157,20 +161,59 @@
             btnEdu.classList.add('active');
         }
     }
-    function openModal() { document.getElementById('schedule-modal').style.display = 'block'; }
-    function closeModal() { document.getElementById('schedule-modal').style.display = 'none'; }
-    function saveSchedule() {
-        const input = document.getElementById('schedule-input');
-        const list = document.getElementById('schedule-list');
-        if (input.value.trim() !== "") {
-            if (list.innerHTML.includes("등록된 일정이 없습니다")) list.innerHTML = "";
-            const newItem = document.createElement('div');
-            newItem.className = 'schedule-item';
-            newItem.innerText = "• " + input.value;
-            list.appendChild(newItem);
-            input.value = "";
-            closeModal();
+
+    // 일정 데이터 배열 (정렬을 위해)
+    let schedules = [];
+
+    // 모달 제어
+    function openModal() {
+        const modal = document.getElementById('schedule-modal');
+        const dateInput = document.getElementById('schedule-date');
+        if(!dateInput.value) {
+            dateInput.value = new Date().toISOString().substring(0, 10);
         }
+        modal.style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('schedule-modal').style.display = 'none';
+    }
+
+    // 일정 저장 및 출력
+    function saveSchedule() {
+        const dateVal = document.getElementById('schedule-date').value;
+        const textVal = document.getElementById('schedule-input').value;
+
+        if (dateVal && textVal.trim() !== "") {
+            // 배열에 저장
+            schedules.push({ date: dateVal, content: textVal });
+            // 날짜순 정렬
+            schedules.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            renderSchedules();
+            
+            document.getElementById('schedule-input').value = "";
+            closeModal();
+        } else {
+            alert("날짜와 내용을 모두 입력해 주세요.");
+        }
+    }
+
+    function renderSchedules() {
+        const listDiv = document.getElementById('schedule-list');
+        listDiv.innerHTML = "";
+
+        if (schedules.length === 0) {
+            listDiv.innerHTML = '<p class="empty-msg">등록된 일정이 없습니다.</p>';
+            return;
+        }
+
+        schedules.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'schedule-item';
+            div.innerHTML = `<span class="sch-date">[${item.date}]</span> <span class="sch-text">${item.content}</span>`;
+            listDiv.appendChild(div);
+        });
     }
 </script>
 
