@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나의 학습 일기 | 2027 임용고시</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* 일기장 전용 추가 스타일 */
+        .diary-container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        
+        /* 글쓰기 영역 */
+        .write-section { border: 1px solid #e1e1e1; padding: 20px; border-radius: 8px; margin-bottom: 40px; }
+        .write-section input[type="text"], .write-section textarea {
+            width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;
+        }
+        .write-section textarea { height: 150px; resize: none; }
+        .file-input { margin: 10px 0; font-size: 0.9rem; color: #666; }
+        .submit-btn { 
+            background: var(--color-primary); color: white; border: none; padding: 10px 20px; 
+            border-radius: 5px; cursor: pointer; font-weight: bold; float: right; 
+        }
+        .submit-btn:hover { background: #2563eb; }
+
+        /* 게시판 목록 영역 */
+        .board-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .board-table th { border-bottom: 2px solid #333; padding: 12px; text-align: left; background: #f9f9f9; }
+        .board-table td { padding: 12px; border-bottom: 1px solid #eee; color: #444; }
+        .board-table tr:hover { background: #fcfcfc; }
+        .no-data { text-align: center; padding: 50px; color: #999; }
+        
+        .col-num { width: 10%; }
+        .col-title { width: 70%; }
+        .col-date { width: 20%; text-align: right; }
+
+        .clear { clear: both; }
+    </style>
+</head>
+<body>
+
+<header>
+     <div class="header-container">
+         <h1><a class="site-title" href="https://envimj.github.io/mjhome">2027 임용고시</a></h1>
+ 
+         <nav>
+             <div class="dropdown">
+                <a href="#">정보·컴퓨터</a>
+                <div class="dropdown-content">
+                    <div class="dropdown-sub">
+                        <a href="#">교과내용학 ▶</a>
+                        <div class="dropdown-sub-content">
+                            <a href="c_programming.html">C프로그래밍</a>
+                            <a href="data_structures.html">자료구조</a>
+                            <a href="computer_networks.html">컴퓨터네트워크</a>
+                            <a href="logic_circuits.html">논리회로</a>
+                            <a href="operating_systems.html">운영체제</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-sub">
+                        <a href="#">교과교육학 ▶</a>
+                        <div class="dropdown-sub-content">
+                            <a href="middle_info.html">중학교 정보</a>
+                            <a href="high_info.html">고등학교 정보</a>
+                            <a href="ai_basics.html">고등학교 인공지능기초</a>
+                            <a href="data_science.html">고등학교 데이터 과학</a>
+                            <a href="software_life.html">고등학교 소프트웨어와 생활</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="dropdown">
+                <a href="#">교육학</a>
+                <div class="dropdown-content">
+                            <a href="curriculum.html">교육과정</a>
+                            <a href="edu_method.html">교육방법 및 교육공학</a>
+                            <a href="edu_evaluation.html">교육평가</a>
+                            <a href="edu_psychology.html">교육심리</a>
+                            <a href="edu_research.html">교육연구</a>
+                            <a href="guidance.html">생활지도</a>
+                            <a href="edu_admin.html">교육행정</a>
+                            <a href="edu_philosophy.html">교육철학 및 교육사</a>
+                            <a href="edu_sociology.html">교육사회학</a>
+                </div>
+            </div>
+            <a href="diary.html">일기장</a>
+            <a href="mock_exam.html">모의고사</a>
+         </nav>
+     </div>
+ </header>
+
+<main class="page-wrapper">
+    <div class="breadcrumb">Home · 일기장</div>
+    <div class="page-hero">
+        <span class="badge">Diary</span>
+        <h2>학습 일기 게시판</h2>
+        <p>오늘의 공부 기록을 남기고 관리하세요. 데이터는 브라우저에 안전하게 저장됩니다.</p>
+    </div>
+
+    <div class="diary-container">
+        <div class="write-section">
+            <h3>📝 새 일기 쓰기</h3>
+            <input type="text" id="diaryTitle" placeholder="제목을 입력하세요" />
+            <textarea id="diaryContent" placeholder="오늘 어떤 내용을 공부했나요? 느낀 점을 자유롭게 기록하세요."></textarea>
+            <div class="file-input">
+                첨부파일: <input type="file" id="diaryFile" />
+            </div>
+            <button class="submit-btn" onclick="saveDiary()">등록하기</button>
+            <div class="clear"></div>
+        </div>
+
+        <div class="list-section">
+            <h3>📋 일기 목록</h3>
+            <table class="board-table">
+                <thead>
+                    <tr>
+                        <th class="col-num">번호</th>
+                        <th class="col-title">제목</th>
+                        <th class="col-date">날짜</th>
+                    </tr>
+                </thead>
+                <tbody id="diaryList">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>신민준 | © 2027 임용고시 학습 허브</p>
+</footer>
+
+<script>
+    // 페이지 로드 시 목록 불러오기
+    window.onload = function() {
+        displayDiaries();
+    };
+
+    function saveDiary() {
+        const title = document.getElementById('diaryTitle').value;
+        const content = document.getElementById('diaryContent').value;
+        const date = new Date().toLocaleDateString();
+
+        if (!title || !content) {
+            alert("제목과 내용을 모두 입력해 주세요!");
+            return;
+        }
+
+        // 기존 데이터 가져오기
+        let diaries = JSON.parse(localStorage.getItem('diaries')) || [];
+        
+        // 번호 매기기 (마지막 번호 + 1)
+        const nextId = diaries.length > 0 ? diaries[0].id + 1 : 1;
+
+        // 새 일기 객체 생성 (최신순 정렬을 위해 배열 앞에 추가)
+        const newEntry = {
+            id: nextId,
+            title: title,
+            content: content,
+            date: date
+        };
+
+        diaries.unshift(newEntry); // 배열 맨 앞에 추가
+        localStorage.setItem('diaries', JSON.stringify(diaries));
+
+        // 입력창 비우기
+        document.getElementById('diaryTitle').value = '';
+        document.getElementById('diaryContent').value = '';
+        document.getElementById('diaryFile').value = '';
+
+        alert("일기가 등록되었습니다!");
+        displayDiaries();
+    }
+
+    function displayDiaries() {
+        const diaryList = document.getElementById('diaryList');
+        const diaries = JSON.parse(localStorage.getItem('diaries')) || [];
+
+        diaryList.innerHTML = '';
+
+        if (diaries.length === 0) {
+            diaryList.innerHTML = '<tr><td colspan="3" class="no-data">등록된 일기가 없습니다.</td></tr>';
+            return;
+        }
+
+        // 최대 10개까지만 노출 (요청하신 10행 기준)
+        const limit = diaries.slice(0, 10);
+
+        limit.forEach(item => {
+            const row = `
+                <tr>
+                    <td class="col-num">${item.id}</td>
+                    <td class="col-title"><strong>${item.title}</strong></td>
+                    <td class="col-date">${item.date}</td>
+                </tr>
+            `;
+            diaryList.innerHTML += row;
+        });
+    }
+</script>
+<footer>
+    <p>신민준 | E-MAIL | PHONE NUMBER | © 2027 임용고시 학습 허브</p>
+</footer>
+</body>
+</html>
