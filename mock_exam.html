@@ -18,7 +18,7 @@
         .write-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
         .submit-btn { background: #03c75a; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; }
 
-        /* 검색창 영역 (네이버 카페 스타일) */
+        /* 검색창 영역 (네이버 카페 스타일 확장) */
         .search-area { 
             display: flex; justify-content: center; align-items: center; gap: 5px; 
             padding: 20px; background: #f2f2f2; border-radius: 8px; margin-bottom: 20px;
@@ -45,53 +45,101 @@
 <body>
 
  <header>
+
      <div class="header-container">
+
          <h1><a class="site-title" href="https://envimj.github.io/mjhome">2027 임용고시</a></h1>
+
  
+
          <nav>
+
              <div class="dropdown">
+
                 <a href="#">정보·컴퓨터</a>
+
                 <div class="dropdown-content">
+
                     <div class="dropdown-sub">
+
                         <a href="#">교과내용학 ▶</a>
+
                         <div class="dropdown-sub-content">
+
                             <a href="c_programming.html">C프로그래밍</a>
+
                             <a href="data_structures.html">자료구조</a>
+
                             <a href="computer_networks.html">컴퓨터네트워크</a>
+
                             <a href="logic_circuits.html">논리회로</a>
+
                             <a href="operating_systems.html">운영체제</a>
+
                         </div>
+
                     </div>
+
                     <div class="dropdown-sub">
+
                         <a href="#">교과교육학 ▶</a>
+
                         <div class="dropdown-sub-content">
+
                             <a href="middle_info.html">중학교 정보</a>
+
                             <a href="high_info.html">고등학교 정보</a>
+
                             <a href="ai_basics.html">고등학교 인공지능기초</a>
+
                             <a href="data_science.html">고등학교 데이터 과학</a>
+
                             <a href="software_life.html">고등학교 소프트웨어와 생활</a>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
              <div class="dropdown">
+
                 <a href="#">교육학</a>
+
                 <div class="dropdown-content">
+
                             <a href="curriculum.html">교육과정</a>
+
                             <a href="edu_method.html">교육방법 및 교육공학</a>
+
                             <a href="edu_evaluation.html">교육평가</a>
+
                             <a href="edu_psychology.html">교육심리</a>
+
                             <a href="edu_research.html">교육연구</a>
+
                             <a href="guidance.html">생활지도</a>
+
                             <a href="edu_admin.html">교육행정</a>
+
                             <a href="edu_philosophy.html">교육철학 및 교육사</a>
+
                             <a href="edu_sociology.html">교육사회학</a>
+
                 </div>
+
             </div>
+
             <a href="diary.html">일기장</a>
+
             <a href="mock_exam.html">모의고사</a>
+
          </nav>
+
      </div>
+
  </header>
 
 <main class="page-wrapper">
@@ -99,7 +147,7 @@
     <div class="page-hero">
         <span class="badge">Exam</span>
         <h2>모의고사 자료실</h2>
-        <p>시험 자료를 업로드하고 태그별로 분류하여 검색할 수 있습니다.</p>
+        <p>시험 자료를 업로드하고 제목, 내용, 태그별로 상세 검색이 가능합니다.</p>
     </div>
 
     <div class="container">
@@ -120,7 +168,9 @@
 
         <div class="search-area">
             <select id="searchType">
-                <option value="all">제목or내용</option>
+                <option value="all">제목+내용</option>
+                <option value="title">제목</option>
+                <option value="content">내용</option>
             </select>
             <select id="searchTag">
                 <option value="전체">전체 태그</option>
@@ -193,7 +243,8 @@
         const list = document.getElementById('postList');
         const posts = JSON.parse(localStorage.getItem('mockPosts')) || [];
         
-        // 검색 값 가져오기
+        // 검색 설정 값 가져오기
+        const sType = document.getElementById('searchType').value; // all, title, content
         const sTag = document.getElementById('searchTag').value;
         const sText = document.getElementById('searchText').value.toLowerCase();
 
@@ -201,8 +252,19 @@
 
         // 필터링 로직
         const filtered = posts.filter(p => {
+            // 1. 태그 필터링
             const matchTag = (sTag === "전체" || p.tag === sTag);
-            const matchText = (p.title.toLowerCase().includes(sText) || p.content.toLowerCase().includes(sText));
+            
+            // 2. 검색 타입(제목/내용) 필터링
+            let matchText = false;
+            if (sType === "all") {
+                matchText = (p.title.toLowerCase().includes(sText) || p.content.toLowerCase().includes(sText));
+            } else if (sType === "title") {
+                matchText = p.title.toLowerCase().includes(sText);
+            } else if (sType === "content") {
+                matchText = p.content.toLowerCase().includes(sText);
+            }
+
             return matchTag && matchText;
         });
 
@@ -211,7 +273,7 @@
             return;
         }
 
-        // 10개 출력
+        // 최신순 10개 출력
         filtered.slice(0, 10).forEach(p => {
             const row = `
                 <tr>
@@ -225,8 +287,10 @@
         });
     }
 </script>
+
 <footer>
      <p>신민준 | E-MAIL | PHONE NUMBER | © 2027 임용고시 학습 허브</p>
  </footer>
+ 
 </body>
 </html>
