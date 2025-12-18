@@ -61,69 +61,57 @@
     <div class="left-content">
         <section class="card review-card">
             <h2>오늘의 한 페이지</h2>
-            <div class="review-tabs">
+            <div class="review-tabs" style="margin-top: 15px;">
                 <button class="tab-btn active" id="btn-major" onclick="showTab('major')">전공</button>
                 <button class="tab-btn" id="btn-edu" onclick="showTab('edu')">교육학</button>
             </div>
-            <div class="review-content">
+            <div class="review-content" style="margin-top: 20px;">
                 <p id="tab-text">오늘의 전공 요약 페이지입니다. 핵심 개념을 한 문단으로 정리해서 보여줍니다.</p>
             </div>
         </section>
 
         <section class="youtube-fighting">
             <h2>동기부여 영상</h2>
-            <div class="youtube">
+            <div class="youtube" style="margin-top: 15px;">
                 <div class="video-wrapper">
-                    <iframe
-                        src="https://www.youtube.com/embed/UQpjPgMRypQ"
-                        title="동기부여 영상"
-                        allowfullscreen>
-                    </iframe>
+                    <iframe src="https://www.youtube.com/embed/UQpjPgMRypQ" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
     </div>
 
-    <aside class="calendar-card">
-        <div class="calendar-header">
-            <h3>나의 달력</h3>
-            <button class="add-btn" onclick="openModal()">+</button>
+    <aside class="calendar-card card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3 style="font-size: 1.1rem;">나의 달력</h3>
+            <button onclick="openModal()" style="background: var(--color-primary); color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer;">+</button>
         </div>
         
         <div class="calendar-display">
             <span class="dday">D-365</span>
-            <p class="calendar-month">2025년 12월</p>
+            <p style="color: #666; font-weight: 600; font-size: 0.9rem;">2025년 12월</p>
         </div>
 
         <div class="calendar-grid">
-            <div class="calendar-day-head">일</div><div class="calendar-day-head">월</div>
-            <div class="calendar-day-head">화</div><div class="calendar-day-head">수</div>
-            <div class="calendar-day-head">목</div><div class="calendar-day-head">금</div>
-            <div class="calendar-day-head">토</div>
+            <div class="calendar-day-head">일</div><div class="calendar-day-head">월</div><div class="calendar-day-head">화</div>
+            <div class="calendar-day-head">수</div><div class="calendar-day-head">목</div><div class="calendar-day-head">금</div><div class="calendar-day-head">토</div>
             
-            <div class="calendar-date" style="grid-column-start: 2;">1</div>
-            <div class="calendar-date">2</div><div class="calendar-date">3</div>
-            <div class="calendar-date">4</div><div class="calendar-date">5</div>
-            <div class="calendar-date">6</div><div class="calendar-date">7</div>
-            <div class="calendar-date">8</div><div class="calendar-date">9</div>
-            <div class="calendar-date">10</div><div class="calendar-date">11</div>
-            <div class="calendar-date">12</div><div class="calendar-date">13</div>
-            <div class="calendar-date">14</div><div class="calendar-date">15</div>
-            <div class="calendar-date">16</div><div class="calendar-date">17</div>
-            <div class="calendar-date today">18</div>
-            <div class="calendar-date">19</div><div class="calendar-date">20</div>
-            <div class="calendar-date">21</div><div class="calendar-date">22</div>
-            <div class="calendar-date">23</div><div class="calendar-date">24</div>
-            <div class="calendar-date">25</div><div class="calendar-date">26</div>
-            <div class="calendar-date">27</div><div class="calendar-date">28</div>
-            <div class="calendar-date">29</div><div class="calendar-date">30</div>
-            <div class="calendar-date">31</div>
+            <div class="calendar-date" style="grid-column-start: 2;">1</div><div class="calendar-date">2</div>
+            <div class="calendar-date">3</div><div class="calendar-date">4</div><div class="calendar-date">5</div>
+            <div class="calendar-date">6</div><div class="calendar-date">7</div><div class="calendar-date">8</div>
+            <div class="calendar-date">9</div><div class="calendar-date">10</div><div class="calendar-date">11</div>
+            <div class="calendar-date">12</div><div class="calendar-date">13</div><div class="calendar-date">14</div>
+            <div class="calendar-date">15</div><div class="calendar-date">16</div><div class="calendar-date">17</div>
+            <div class="calendar-date today">18</div><div class="calendar-date">19</div><div class="calendar-date">20</div>
+            <div class="calendar-date">21</div><div class="calendar-date">22</div><div class="calendar-date">23</div>
+            <div class="calendar-date">24</div><div class="calendar-date">25</div><div class="calendar-date">26</div>
+            <div class="calendar-date">27</div><div class="calendar-date">28</div><div class="calendar-date">29</div>
+            <div class="calendar-date">30</div><div class="calendar-date">31</div>
         </div>
 
         <div class="weekly-schedule">
             <h4>📅 이번 주 일정</h4>
-            <div id="schedule-list">
-                <p class="empty-msg">등록된 일정이 없습니다.</p>
+            <div id="schedule-list" style="margin-top: 10px;">
+                <p style="color: #ccc; font-size: 0.85rem; text-align: center; padding: 15px;">등록된 일정이 없습니다.</p>
             </div>
         </div>
     </aside>
@@ -133,11 +121,11 @@
     <h3>일정 추가</h3>
     <div class="modal-input-group">
         <input type="date" id="schedule-date">
-        <input type="text" id="schedule-input" placeholder="일정을 입력하세요">
+        <input type="text" id="schedule-input" placeholder="일정 내용">
     </div>
     <div class="modal-btns">
         <button class="save-btn" onclick="saveSchedule()">저장</button>
-        <button class="cancel-btn" onclick="closeModal()">취소</button>
+        <button onclick="closeModal()">취소</button>
     </div>
 </div>
 
@@ -146,76 +134,48 @@
 </footer>
 
 <script>
-    // 탭 전환
     function showTab(type) {
         const text = document.getElementById('tab-text');
-        const btnMajor = document.getElementById('btn-major');
-        const btnEdu = document.getElementById('btn-edu');
-        if (type === 'major') {
+        const b1 = document.getElementById('btn-major');
+        const b2 = document.getElementById('btn-edu');
+        if(type === 'major') {
             text.innerText = "오늘의 전공 요약 페이지입니다. 핵심 개념을 한 문단으로 정리해서 보여줍니다.";
-            btnMajor.classList.add('active');
-            btnEdu.classList.remove('active');
+            b1.classList.add('active'); b2.classList.remove('active');
         } else {
             text.innerText = "오늘의 교육학 요약 페이지입니다. 교육과정, 심리 등 핵심 이론을 정리합니다.";
-            btnMajor.classList.remove('active');
-            btnEdu.classList.add('active');
+            b1.classList.remove('active'); b2.classList.add('active');
         }
     }
 
-    // 일정 데이터 배열 (정렬을 위해)
     let schedules = [];
-
-    // 모달 제어
     function openModal() {
-        const modal = document.getElementById('schedule-modal');
-        const dateInput = document.getElementById('schedule-date');
-        if(!dateInput.value) {
-            dateInput.value = new Date().toISOString().substring(0, 10);
-        }
-        modal.style.display = 'block';
+        document.getElementById('schedule-date').value = new Date().toISOString().substring(0, 10);
+        document.getElementById('schedule-modal').style.display = 'block';
     }
+    function closeModal() { document.getElementById('schedule-modal').style.display = 'none'; }
 
-    function closeModal() {
-        document.getElementById('schedule-modal').style.display = 'none';
-    }
-
-    // 일정 저장 및 출력
     function saveSchedule() {
-        const dateVal = document.getElementById('schedule-date').value;
-        const textVal = document.getElementById('schedule-input').value;
-
-        if (dateVal && textVal.trim() !== "") {
-            // 배열에 저장
-            schedules.push({ date: dateVal, content: textVal });
-            // 날짜순 정렬
-            schedules.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-            renderSchedules();
-            
+        const d = document.getElementById('schedule-date').value;
+        const t = document.getElementById('schedule-input').value;
+        if(d && t.trim()) {
+            schedules.push({date: d, content: t});
+            schedules.sort((a,b) => new Date(a.date) - new Date(b.date));
+            render();
             document.getElementById('schedule-input').value = "";
             closeModal();
-        } else {
-            alert("날짜와 내용을 모두 입력해 주세요.");
         }
     }
 
-    function renderSchedules() {
-        const listDiv = document.getElementById('schedule-list');
-        listDiv.innerHTML = "";
-
-        if (schedules.length === 0) {
-            listDiv.innerHTML = '<p class="empty-msg">등록된 일정이 없습니다.</p>';
-            return;
-        }
-
-        schedules.forEach(item => {
-            const div = document.createElement('div');
-            div.className = 'schedule-item';
-            div.innerHTML = `<span class="sch-date">[${item.date}]</span> <span class="sch-text">${item.content}</span>`;
-            listDiv.appendChild(div);
+    function render() {
+        const list = document.getElementById('schedule-list');
+        list.innerHTML = schedules.length ? "" : '<p style="color: #ccc; font-size: 0.85rem; text-align: center; padding: 15px;">등록된 일정이 없습니다.</p>';
+        schedules.forEach(s => {
+            const item = document.createElement('div');
+            item.className = 'schedule-item';
+            item.innerHTML = `<span class="sch-date">[${s.date}]</span> ${s.content}`;
+            list.appendChild(item);
         });
     }
 </script>
-
 </body>
 </html>

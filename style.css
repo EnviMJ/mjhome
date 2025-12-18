@@ -1,4 +1,32 @@
 /* [초기 설정 및 폰트] */
+/* 폰트 로드 (Segoe UI가 없을 경우를 대비한 구글 폰트 추천) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Segoe UI', 'Inter', sans-serif; /* 1순위 Segoe UI 적용 */
+    -webkit-font-smoothing: antialiased; /* 글씨를 더 부드럽게 표현 */
+}
+
+/* 카드 가독성을 위한 추가 설정 */
+.section-card ul {
+    list-style-type: none; /* 기본 점 제거 */
+    padding-left: 0;
+}
+
+.section-card li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+}
+
+.section-card li::before {
+    content: "•"; /* 커스텀 불릿 */
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
 :root {
     --color-primary: #3A86FF;
     --color-accent: #FFB700;
